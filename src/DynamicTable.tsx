@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import Button from '@atlaskit/button';
 import DynamicTable from '@atlaskit/dynamic-table';
-import { caption, head, rows } from './content/sample-data';
+import { head, rows } from './content/sample-data';
 
 type State = { showPagination: boolean };
 
@@ -22,15 +21,14 @@ export default class extends Component<{}, State> {
 
   render() {
     return (
-      <Wrapper>
+      <>
         <p>
           Pagination is enabled or disabled by setting or unsetting the{' '}
           <code>rowsPerPage</code>
           prop.
         </p>
-        <Button onClick={this.togglePagination}>Toggle pagination</Button>
         <DynamicTable
-          caption={caption}
+          caption={'hello'}
           head={head}
           rows={rows.slice(0, 5)}
           rowsPerPage={this.state.showPagination ? 10 : undefined}
@@ -40,8 +38,9 @@ export default class extends Component<{}, State> {
           defaultSortOrder="ASC"
           onSort={() => console.log('onSort')}
           onSetPage={() => console.log('onSetPage')}
+          rankable
         />
-      </Wrapper>
+      </>
     );
   }
 }
